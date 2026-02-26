@@ -1,0 +1,48 @@
+spring:
+ proiles: local  
+ application:
+  name: demo
+ datasource:
+  url:  jdbc:h2:mem:testdb
+  driverClassName:  org.h2.Driver
+  username: sa
+  password: password
+ jpa:
+  database-platform:  org.hibernate.dialect.H2Dialect
+  properties:
+   hibernate:
+    show_sql: true
+    format_sql: true
+server:
+ port: 8080
+
+message: '# [local profile] PingCtrl.ping method called at'
+
+logging:
+ file:
+  name: demo.log
+  max-size: 1MB
+ pattern:
+  file: "%d{ dd-MM-yyyy } [%thread] %-5level %logger{36} - %msg%n"
+
+
+#General log level
+level:
+ ROOT: ERROR
+ #Specific log level
+ com.example.demo.controller: error
+ org.springframework.security: debug
+ org.hibernate: info
+ org.springframework.web: INFO
+# ==============================================================
+# = Actuator Parameters
+# ==============================================================
+ management:
+  endpoints:
+   web:
+    exposure:
+     include: "*"
+  info:
+   env:
+    enabled: true
+

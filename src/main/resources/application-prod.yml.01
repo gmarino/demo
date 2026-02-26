@@ -1,0 +1,30 @@
+spring:
+ proiles: prod  
+ application:
+  name: demo
+ datasource:
+  url:  jdbc:h2:mem:testdb
+  driverClassName:  org.h2.Driver
+  username: sa
+  password: password
+ jpa:
+  database-platform:  org.hibernate.dialect.H2Dialect
+server:
+ port: 8080
+message: '# [prod profile] PingCtrl.ping method called at'
+
+logging:
+ file:
+  name: demo.log
+  max-size: 1MB
+ pattern:
+  file: "%d{ dd-MM-yyyy } [%thread] %-5level %logger{36} - %msg%n"
+  #console: "%d{ dd-MM-yyyy HH:mm:ss} - %msg%n"
+
+ #General log level
+ level:
+  root: INFO
+  #Specific log level
+  org.springframework.security: debug
+  org.hibernate: INFO
+  org.springframework.web: INFO
